@@ -1,3 +1,6 @@
-test git add and commit
-add add_commit.md
-git commit -m "test add and commit"
+# test git add and commit
+
+git add add_commit.md
+git add .  
+git commit -m "test add and commit"  
+git commit -a -m "test add and commit"  
