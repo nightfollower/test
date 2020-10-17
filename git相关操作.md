@@ -1,6 +1,6 @@
 # git的常用操作
 
->记录github命令行下常用命令,如果想了解git相关知识推荐git官方书籍[Pro Git](https://git-scm.com/book/zh/v2)
+>记录git命令行下常用命令,如果想了解git相关知识推荐git官方书籍[Pro Git](https://git-scm.com/book/zh/v2)
 
 </br>
 
@@ -35,6 +35,7 @@ git diff
 ## 查看提交历史
 
 ~~~shell
+# 查看历史
 git log
 # 查看最近两次提交,并和现在的版本比较差别
 git log -p -2
@@ -42,6 +43,10 @@ git log -p -2
 git log pretty=oneline
 # 查看特定文件的改动
 git log README.md
+# 以图表形式查看分支
+git log --graph
+# 查看当前仓库执行过的操作
+git reflog
 ~~~
 
 ## 撤销操作
@@ -54,6 +59,8 @@ git commit -m"initial commit"
 git add forgotten.md
 git commit --amend
 ~~~
+
+- [ ] git rebase
 
 撤销工作区的更改
 
@@ -89,5 +96,52 @@ git tag -a v1.0 6ce31bd
 
 ## 添加分支
 
+创建并进入分支
+
+~~~shell
+git checkout -b feature-A
+~~~
+
+或者
+
+~~~shell
+git branch feature-A
+git checkout feature-A
+~~~
+
+切换到上一个分支
+
+~~~shell
+git checkout -
+~~~
+
+在不同的分支当中，工作区的文档不会随之变化
+
+## 合并分支
+
+假设feature-A已经实现完毕，要将他合并到master中  
+
+1.切换到master分支
+
+~~~shell
+git checkout master
+~~~
+
+2.合并feature-A分支
+
+~~~shell
+git merge feature-A
+~~~
+
+3.删除不需要的分支
+
+~~~shell
+git branch -d feature-A
+~~~
+
 ## 回滚到某个版本
 
+~~~shell
+git reset (hex)
+git revert (hex)
+~~~
